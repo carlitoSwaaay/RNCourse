@@ -13,8 +13,8 @@
   }
 
   function addGoalHandler() {
-    setCourseGoals(currentCourseGoals => [
-      ...courseGoals,
+    setCourseGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
       { text: enteredGoalText, key: Math.random().toString()},
     ]);
   }
