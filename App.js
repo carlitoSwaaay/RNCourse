@@ -3,7 +3,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, FlatList } from 'react-native';
-import GoalItem from './components/goalItem';
+import GoalItem from './components/GoalItem';
 
 
  export default function App() {
