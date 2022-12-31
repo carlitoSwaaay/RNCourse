@@ -15,7 +15,7 @@ import { Text, View, TextInput, Button, StyleSheet, FlatList } from 'react-nativ
   function addGoalHandler() {
     setCourseGoals((currentcourseGoals) => [
       ...currentcourseGoals,
-      enteredGoalText,
+      { text: enteredGoalText, id: Math.random().toString() },
     ]);
   }
 
@@ -34,10 +34,13 @@ import { Text, View, TextInput, Button, StyleSheet, FlatList } from 'react-nativ
             renderItem={(itemData) => {
               return (
                 <View style={styles.goalItem}>
-                  <Text style={styles.goalText}>{itemData.item}</Text>
+                  <Text style={styles.goalText}>{itemData.item.text}</Text>
                 </View>
               );
             }}  
+          keyExtractor={(item, index) => {
+            return item.id;
+          }}
              />  
         </View>      
     </View>    
