@@ -1,8 +1,10 @@
 // react native Udemy course
 
- import React from 'react';
- import {useState} from 'react';
-import { Text, View, TextInput, Button, StyleSheet, FlatList } from 'react-native';
+import React from 'react';
+import { useState } from 'react';
+import { View, TextInput, Button, StyleSheet, FlatList } from 'react-native';
+import GoalItem from './components/goalItem';
+
 
  export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState('');
@@ -32,11 +34,7 @@ import { Text, View, TextInput, Button, StyleSheet, FlatList } from 'react-nativ
           <FlatList
             data={courseGoals}
             renderItem={(itemData) => {
-              return (
-                <View style={styles.goalItem}>
-                  <Text style={styles.goalText}>{itemData.item.text}</Text>
-                </View>
-              );
+              return <GoalItem />;
             }}  
           keyExtractor={(item, index) => {
             return item.id;
@@ -74,17 +72,7 @@ const styles = StyleSheet.create({
     },
     goalsContainer: {
       flex: 4,
-    },
-    goalItem: {
-      margin: 8,
-      padding: 8,
-      borderRadius: 6,
-      backgroundColor: '#5e0acc',
-      color: 'white'
-    },
-    goalText: {
-      color: 'white'},
-
+  },   
 
   })
     
