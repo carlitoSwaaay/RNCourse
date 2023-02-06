@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from "react";
-import { StyleSheet } from "react-native";
-import { Button, TextInput, View } from "react-native";
+import { Button, TextInput, View, StyleSheet } from "react-native";
 
 
 function GoalInput(props) {

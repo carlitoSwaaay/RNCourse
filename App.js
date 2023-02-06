@@ -13,7 +13,7 @@ import GoalItem from './components/GoalItem';
 
 
 
-   function addGoalHandler() {
+   function addGoalHandler(enteredGoalText) {
     setCourseGoals((currentcourseGoals) => [
       ...currentcourseGoals,
       { text: enteredGoalText, id: Math.random().toString() },
@@ -27,7 +27,7 @@ import GoalItem from './components/GoalItem';
           <FlatList
             data={courseGoals}
             renderItem={(itemData) => {
-              return <GoalItem text={itemData.item.text} />;
+              <GoalItem text={itemData.item.text} />;
             }}  
           keyExtractor={(item, index) => {
             return item.id;
@@ -36,7 +36,7 @@ import GoalItem from './components/GoalItem';
         </View>      
     </View>    
     );
-  }
+ }
 
 
           
