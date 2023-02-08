@@ -3,18 +3,18 @@ import { useState } from "react";
 import { Button, TextInput, View, StyleSheet } from "react-native";
 
 
-function GoalInput(props) {
+const GoalInput = (props) => {
 
   const [enteredGoalText, setEnteredGoalText] = useState('');
 
-  function goalInputHandler(enteredText) {
+  const goalInputHandler = (enteredText) => {
     setEnteredGoalText(enteredText);
-  }
+  };
 
-  function addGoalHandler() {
+  const addGoalHandler = () => {
     props.onAddGoal(enteredGoalText);
     setEnteredGoalText('');
-  }
+  };
 
 
   return (
