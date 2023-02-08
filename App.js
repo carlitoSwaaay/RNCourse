@@ -16,10 +16,11 @@ import GoalItem from './components/GoalItem';
    };
 
    const addGoalHandler = () => {
-     setCourseGoals(currentCourseGoals => [
-       ...currentCourseGoals,
-       enteredGoalText,
-     ]);
+     console.log(enteredGoalText);
+    //  setCourseGoals(currentCourseGoals => [
+    //    ...currentCourseGoals,
+    //    enteredGoalText,
+    //  ]);
    };
 
   return (
