@@ -16,11 +16,10 @@ import GoalItem from './components/GoalItem';
    };
 
    const addGoalHandler = () => {
-     console.log(enteredGoalText);
-    //  setCourseGoals(currentCourseGoals => [
-    //    ...currentCourseGoals,
-    //    enteredGoalText,
-    //  ]);
+     setCourseGoals(currentCourseGoals => [
+       ...currentCourseGoals,
+       enteredGoalText,
+     ]);
    };
 
   return (
@@ -34,7 +33,13 @@ import GoalItem from './components/GoalItem';
         <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <Text>List of Goals...</Text>
+        {courseGoals.map((goal) => (
+          <View key={goal} style={styles.goalItem}>
+            <Text style={styles.goalText}>
+              {goal}
+            </Text>
+          </View>
+        ))}
       </View>     
     </View>    
     );
@@ -65,10 +70,25 @@ const styles = StyleSheet.create({
     marginRight: 8,
     padding: 8
   },
-
-    goalsContainer: {
+  goalsContainer: {
       flex: 5,
-  },   
+  },  
+  goalItem: {
+    borderWidth: 1,
+    borderRadius: 6,
+    borderColor: '#e97335',
+    paddingLeft: 8,
+    marginBottom: 8,
+    padding: 4,
+    backgroundColor: '#e97335',
+    color: 'white',
+    // alignItems: 'center',
+  },
+  goalText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
 
-  })
+});
     
