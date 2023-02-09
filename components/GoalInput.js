@@ -4,29 +4,31 @@ import { Button, TextInput, View, StyleSheet } from "react-native";
 
 
 const GoalInput = (props) => {
-
   const [enteredGoalText, setEnteredGoalText] = useState('');
+  // const [courseGoals, setCourseGoals] = useState([]);
 
   const goalInputHandler = (enteredText) => {
     setEnteredGoalText(enteredText);
   };
 
-  const addGoalHandler = () => {
-    props.onAddGoal(enteredGoalText);
-    setEnteredGoalText('');
-  };
-
+  // const addGoalHandler = () => {
+  //   setCourseGoals(currentCourseGoals => [
+  //     ...currentCourseGoals,
+  //     { text: enteredGoalText, id: Math.random().toString() },
+  //   ]);
+  // };
 
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.textInput}
-        placeholder="Your course goals!"
-        onChangeText={goalInputHandler} />
+        placeholder="Your course goal!"
+        onChangeText={goalInputHandler}
+      />
       <Button title="Add Goal" onPress={props.onAddGoal} />
     </View>
   );
-}
+};
 
 export default GoalInput;
 
@@ -47,5 +49,4 @@ const styles = StyleSheet.create({
     marginRight: 8,
     padding: 8
   },
-})
-
+});
