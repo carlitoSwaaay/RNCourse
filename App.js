@@ -18,6 +18,10 @@ import GoalItem from './components/GoalItem';
      ]);
    };
 
+   const deleteGoalHandler = () => {
+     console.log("delete goal");
+   };
+
   return (
     <View style={styles.appContainer}>
       <GoalInput onAddGoal={addGoalHandler} />
@@ -25,7 +29,7 @@ import GoalItem from './components/GoalItem';
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-            return <GoalItem text={itemData.item.text} />;
+            return <GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} />;
           }}
           keyExtractor={(item, index) => {
             return item.id; //video uses item.id but that's not working for me
