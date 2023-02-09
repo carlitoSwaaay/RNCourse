@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
     padding: 4,
     backgroundColor: '#e97335',
     color: 'white',
-    // alignItems: 'center',
   },
   goalText: {
     color: 'white',
