@@ -33,15 +33,19 @@ import GoalItem from './components/GoalItem';
         <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView alwaysBounceVertical={false} >
-        {courseGoals.map((goal) => (
+        <FlatList
+          data={courseGoals}
+          renderItem={item => {
+            return (
           <View key={goal} style={styles.goalItem}>
             <Text style={styles.goalText}>
               {goal}
             </Text>
           </View>
-        ))}
-        </ScrollView>    
+            );
+          }}
+          alwaysBounceVertical={false}
+        />   
       </View> 
     </View>    
     );
