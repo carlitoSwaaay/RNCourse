@@ -18,8 +18,10 @@ import GoalItem from './components/GoalItem';
      ]);
    };
 
-   const deleteGoalHandler = () => {
-     console.log("delete goal");
+   const deleteGoalHandler = (id) => {
+     setCourseGoals(currentCourseGoals => {
+       return currentCourseGoals.filter((goal) => goal.id !== id);
+     });
    };
 
   return (
