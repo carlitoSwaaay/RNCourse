@@ -36,7 +36,7 @@ import GoalItem from './components/GoalItem';
         color="e97335"
         onPress={startAddGoalHandler}
       />
-      {modalIsVisible && <GoalInput onAddGoal={addGoalHandler} />}
+      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
