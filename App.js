@@ -2,45 +2,50 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, FlatList, Button, TextInput, Text } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
 
  export default function App() {
-   const [enteredGoalText, setEnteredGoalText] = useState('');
+
    const [courseGoals, setCourseGoals] = useState([]);
 
-   const goalInputHandler = (enteredText) => {
-     setEnteredGoalText(enteredText);
-   };
-
-   const addGoalHandler = () => {
+   const addGoalHandler = (enteredGoalText) => {
      setCourseGoals(currentCourseGoals => [
        ...currentCourseGoals,
-       enteredGoalText,
+       { text: enteredGoalText, id: Math.random().toString() },
      ]);
    };
 
+   const deleteGoalHandler = (id) => {
+     setCourseGoals(currentCourseGoals => {
+       console.log('deleteGoalHandler');
+       return currentCourseGoals.filter((goal) => goal.id !== id);
+     });
+   }
+
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Your course goal!"
-          onChangeText={goalInputHandler}
-        />
-        <Button title="Add Goal" onPress={addGoalHandler} />
-      </View>
+      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
-        {courseGoals.map((goal) => (
-          <View key={goal} style={styles.goalItem}>
-            <Text style={styles.goalText}>
-              {goal}
-            </Text>
-          </View>
-        ))}
-      </View>     
+        <FlatList
+          data={courseGoals}
+          renderItem={(itemData) => {
+            return (
+              <GoalItem
+                text={itemData.item.text}
+                id={itemData.item.id}
+                onDeleteItem={deleteGoalHandler}
+              />
+            );
+          }}
+          keyExtractor={(item, index) => {
+            return item.id; 
+          }}
+          alwaysBounceVertical={false}
+        />   
+      </View> 
     </View>    
     );
  }
@@ -53,42 +58,9 @@ const styles = StyleSheet.create({
       paddingTop: 50,
       paddingHorizontal: 16,
 
-    },
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    width: '70%',
-    marginRight: 8,
-    padding: 8
   },
   goalsContainer: {
       flex: 5,
-  },  
-  goalItem: {
-    borderWidth: 1,
-    borderRadius: 6,
-    borderColor: '#e97335',
-    paddingLeft: 8,
-    marginBottom: 8,
-    padding: 4,
-    backgroundColor: '#e97335',
-    color: 'white',
-    // alignItems: 'center',
-  },
-  goalText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-
+  }
 });
     
