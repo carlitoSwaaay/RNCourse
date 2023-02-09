@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, FlatList, Button, TextInput, Text } from 'react-native';
+import { View, StyleSheet, FlatList, Button, TextInput } from 'react-native';
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
@@ -18,7 +18,7 @@ import GoalItem from './components/GoalItem';
    const addGoalHandler = () => {
      setCourseGoals(currentCourseGoals => [
        ...currentCourseGoals,
-       { text: enteredGoalText, key: Math.random().toString() },
+       { text: enteredGoalText, id: Math.random().toString() },
      ]);
    };
 
@@ -36,15 +36,10 @@ import GoalItem from './components/GoalItem';
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-
-            return (
-              <View style={styles.goalItem}>
-                <Text style={styles.goalText}>{itemData.item.text}</Text>
-              </View>
-            );
+            return <GoalItem />;
           }}
           keyExtractor={(item, index) => {
-            return item.key; //video uses item.id but that's not working for me
+            return item.id; //video uses item.id but that's not working for me
           }}
           alwaysBounceVertical={false}
         />   
@@ -80,22 +75,6 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
       flex: 5,
-  },  
-  goalItem: {
-    borderWidth: 1,
-    borderRadius: 6,
-    borderColor: '#e97335',
-    paddingLeft: 8,
-    marginBottom: 8,
-    padding: 4,
-    backgroundColor: '#e97335',
-    color: 'white',
-  },
-  goalText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-
+  }
 });
     
