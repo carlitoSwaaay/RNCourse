@@ -20,9 +20,10 @@ import GoalItem from './components/GoalItem';
 
    const deleteGoalHandler = (id) => {
      setCourseGoals(currentCourseGoals => {
+       console.log('deleteGoalHandler');
        return currentCourseGoals.filter((goal) => goal.id !== id);
      });
-   };
+   }
 
   return (
     <View style={styles.appContainer}>
@@ -31,10 +32,16 @@ import GoalItem from './components/GoalItem';
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-            return <GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} />;
+            return (
+              <GoalItem
+                text={itemData.item.text}
+                id={itemData.item.id}
+                onDeleteItem={deleteGoalHandler}
+              />
+            );
           }}
           keyExtractor={(item, index) => {
-            return item.id; //video uses item.id but that's not working for me
+            return item.id; 
           }}
           alwaysBounceVertical={false}
         />   
