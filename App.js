@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, FlatList, Button, TextInput, Text, ScrollView } from 'react-native';
+import { View, StyleSheet, FlatList, Button, TextInput, Text } from 'react-native';
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
@@ -18,7 +18,7 @@ import GoalItem from './components/GoalItem';
    const addGoalHandler = () => {
      setCourseGoals(currentCourseGoals => [
        ...currentCourseGoals,
-       enteredGoalText,
+       { text: enteredGoalText, key: Math.random().toString() },
      ]);
    };
 
@@ -35,14 +35,16 @@ import GoalItem from './components/GoalItem';
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
-          renderItem={item => {
+          renderItem={(itemData) => {
+
             return (
-          <View key={goal} style={styles.goalItem}>
-            <Text style={styles.goalText}>
-              {goal}
-            </Text>
-          </View>
+              <View style={styles.goalItem}>
+                <Text style={styles.goalText}>{itemData.item.text}</Text>
+              </View>
             );
+          }}
+          keyExtractor={(item, index) => {
+            return item.key; //video uses item.id but that's not working for me
           }}
           alwaysBounceVertical={false}
         />   
