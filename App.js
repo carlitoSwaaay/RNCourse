@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, FlatList, Button, TextInput, Text } from 'react-native';
+import { View, StyleSheet, FlatList, Button, TextInput, Text, ScrollView } from 'react-native';
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
@@ -33,6 +33,7 @@ import GoalItem from './components/GoalItem';
         <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
+        <ScrollView alwaysBounceVertical={false} >
         {courseGoals.map((goal) => (
           <View key={goal} style={styles.goalItem}>
             <Text style={styles.goalText}>
@@ -40,7 +41,8 @@ import GoalItem from './components/GoalItem';
             </Text>
           </View>
         ))}
-      </View>     
+        </ScrollView>    
+      </View> 
     </View>    
     );
  }
