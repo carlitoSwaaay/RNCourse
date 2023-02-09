@@ -36,7 +36,7 @@ import GoalItem from './components/GoalItem';
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-            return <GoalItem />;
+            return <GoalItem text={itemData.item.text} />;
           }}
           keyExtractor={(item, index) => {
             return item.id; //video uses item.id but that's not working for me
