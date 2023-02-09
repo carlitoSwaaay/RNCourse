@@ -4,19 +4,17 @@ import { Button, TextInput, View, StyleSheet } from "react-native";
 
 
 const GoalInput = (props) => {
+
   const [enteredGoalText, setEnteredGoalText] = useState('');
-  // const [courseGoals, setCourseGoals] = useState([]);
 
   const goalInputHandler = (enteredText) => {
     setEnteredGoalText(enteredText);
   };
 
-  // const addGoalHandler = () => {
-  //   setCourseGoals(currentCourseGoals => [
-  //     ...currentCourseGoals,
-  //     { text: enteredGoalText, id: Math.random().toString() },
-  //   ]);
-  // };
+  const addGoalHandler = () => {
+    props.onAddGoal(enteredGoalText);
+    setEnteredGoalText(' ');
+  };
 
   return (
     <View style={styles.inputContainer}>
@@ -24,8 +22,9 @@ const GoalInput = (props) => {
         style={styles.textInput}
         placeholder="Your course goal!"
         onChangeText={goalInputHandler}
+        value={enteredGoalText}
       />
-      <Button title="Add Goal" onPress={props.onAddGoal} />
+      <Button title="Add Goal" onPress={addGoalHandler} />
     </View>
   );
 };
