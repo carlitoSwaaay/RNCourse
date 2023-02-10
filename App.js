@@ -23,8 +23,7 @@ import GoalItem from './components/GoalItem';
    };
 
    const deleteGoalHandler = (id) => {
-     setCourseGoals(currentCourseGoals => {
-       console.log('deleteGoalHandler');
+     setCourseGoals((currentCourseGoals) => {
        return currentCourseGoals.filter((goal) => goal.id !== id);
      });
    }
