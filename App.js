@@ -3,6 +3,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { View, StyleSheet, FlatList, Button, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
@@ -34,6 +36,8 @@ import GoalItem from './components/GoalItem';
    }
 
   return (
+    <>
+      <StatusBar style="auto" />
     <View style={styles.appContainer}>
       <View style={styles.goalItem}>
       <Button
@@ -66,6 +70,7 @@ import GoalItem from './components/GoalItem';
         />   
       </View> 
     </View>    
+    </>
     );
  }
 
