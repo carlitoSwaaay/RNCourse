@@ -2,32 +2,55 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Button, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
 
  export default function App() {
-
+   const [modalIsVisible, setModalIsVisible] = useState(false);
    const [courseGoals, setCourseGoals] = useState([]);
+
+   const startAddGoalHandler = () => {
+     setModalIsVisible(true);
+   };
+
+   const endAddGoalHandler = () => {
+     setModalIsVisible(false);
+   };
 
    const addGoalHandler = (enteredGoalText) => {
      setCourseGoals(currentCourseGoals => [
        ...currentCourseGoals,
        { text: enteredGoalText, id: Math.random().toString() },
      ]);
+     endAddGoalHandler();
    };
 
    const deleteGoalHandler = (id) => {
-     setCourseGoals(currentCourseGoals => {
-       console.log('deleteGoalHandler');
+     setCourseGoals((currentCourseGoals) => {
        return currentCourseGoals.filter((goal) => goal.id !== id);
      });
    }
 
   return (
+    <>
+      <StatusBar style="auto" />
     <View style={styles.appContainer}>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <View style={styles.goalItem}>
+      <Button
+          title='Add New Task'
+        color="e97335"
+        onPress={startAddGoalHandler}
+      />
+      </View>
+      <GoalInput
+        visible={modalIsVisible}
+        onAddGoal={addGoalHandler}
+        onCancel={endAddGoalHandler}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
@@ -47,6 +70,7 @@ import GoalItem from './components/GoalItem';
         />   
       </View> 
     </View>    
+    </>
     );
  }
 
@@ -54,13 +78,19 @@ import GoalItem from './components/GoalItem';
           
 const styles = StyleSheet.create({
     appContainer: {
-      flex: 1,
-      paddingTop: 50,
+    flex: 1,
+    paddingTop: 70,
       paddingHorizontal: 16,
 
   },
   goalsContainer: {
-      flex: 5,
-  }
+    flex: 4,
+  },
+  goalItem: {
+    margin: 8,
+    font: 'bold',
+    borderRadius: 6,
+    backgroundColor: '#e97335',
+  },
 });
     
