@@ -62,13 +62,13 @@ import GoalItem from './components/GoalItem';
           
 const styles = StyleSheet.create({
     appContainer: {
-      flex: 1,
-      paddingTop: 50,
+    flex: 1,
+    paddingTop: 70,
       paddingHorizontal: 16,
 
   },
   goalsContainer: {
-      flex: 5,
+    flex: 4,
   }
 });
     

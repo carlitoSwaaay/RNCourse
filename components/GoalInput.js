@@ -17,7 +17,8 @@ const GoalInput = (props) => {
   };
 
   return (
-    <Modal visible={props.visible} animationType="slide">
+    <>
+      <Modal visible={props.visible} animationType="fade" >
       <View style={styles.inputContainer}>
         <TextInput
         style={styles.textInput}
@@ -35,6 +36,7 @@ const GoalInput = (props) => {
         </View>
       </View>
     </Modal>
+    </>
   );
 };
 
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 100,
+    backgroundColor: '#e97335',
     marginHorizontal: 8
   },
 });
