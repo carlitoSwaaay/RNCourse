@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, FlatList, Button } from 'react-native';
+import { View, StyleSheet, FlatList, Button, Image } from 'react-native';
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
@@ -37,7 +37,7 @@ import GoalItem from './components/GoalItem';
     <View style={styles.appContainer}>
       <View style={styles.goalItem}>
       <Button
-        title='Add New Goal'
+          title='Add New Task'
         color="e97335"
         onPress={startAddGoalHandler}
       />
