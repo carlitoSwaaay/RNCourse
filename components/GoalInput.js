@@ -17,7 +17,7 @@ const GoalInput = (props) => {
   };
 
   return (
-    <>
+
       <Modal visible={props.visible} animationType="fade" >
       <View style={styles.inputContainer}>
         <TextInput
@@ -27,16 +27,16 @@ const GoalInput = (props) => {
         value={enteredGoalText}
         />
         <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-        <Button title="Add Goal" onPress={addGoalHandler} />
+          <View style={styles.button1}>
+            <Button title="Add Goal" onPress={addGoalHandler} />
           </View>
-          <View style={styles.button}>
+          <View style={styles.button2}>
             <Button title="Cancel" color="red" onPress={props.onCancel} />
           </View>
         </View>
       </View>
     </Modal>
-    </>
+
   );
 };
 
@@ -55,17 +55,21 @@ const styles = StyleSheet.create({
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
-    width: '70%',
-    marginRight: 8,
+    width: '80%',
     padding: 8
   },
   buttonContainer: {
     marginTop: 16,
     flexDirection: 'row',
   },
-  button: {
-    width: 100,
-    backgroundColor: '#e97335',
+  button1: {
+    width: '30%',
+    color: '#e97335',
+    marginHorizontal: 8
+  },
+  button2: {
+    width: '30%',
+    // backgroundColor: '#e97335',
     marginHorizontal: 8
   },
 });

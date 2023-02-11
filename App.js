@@ -15,11 +15,16 @@ import GoalItem from './components/GoalItem';
      setModalIsVisible(true);
    };
 
+   const endAddGoalHandler = () => {
+     setModalIsVisible(false);
+   };
+
    const addGoalHandler = (enteredGoalText) => {
      setCourseGoals(currentCourseGoals => [
        ...currentCourseGoals,
        { text: enteredGoalText, id: Math.random().toString() },
      ]);
+     endAddGoalHandler();
    };
 
    const deleteGoalHandler = (id) => {
@@ -30,12 +35,18 @@ import GoalItem from './components/GoalItem';
 
   return (
     <View style={styles.appContainer}>
+      <View style={styles.goalItem}>
       <Button
         title='Add New Goal'
         color="e97335"
         onPress={startAddGoalHandler}
       />
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} />
+      </View>
+      <GoalInput
+        visible={modalIsVisible}
+        onAddGoal={addGoalHandler}
+        onCancel={endAddGoalHandler}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
@@ -69,6 +80,12 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 4,
-  }
+  },
+  goalItem: {
+    margin: 8,
+    font: 'bold',
+    borderRadius: 6,
+    backgroundColor: '#e97335',
+  },
 });
     
