@@ -13,7 +13,7 @@ const GoalInput = (props) => {
 
   const addGoalHandler = () => {
     props.onAddGoal(enteredGoalText);
-    setEnteredGoalText(' ');
+    setEnteredGoalText('');
   };
 
   return (
