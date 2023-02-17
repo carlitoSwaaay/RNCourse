@@ -16,6 +16,12 @@ const GoalInput = (props) => {
     setEnteredGoalText('');
   };
 
+  // const resetGoalHandler = () => {
+  //   setEnteredGoalText('');
+  // };
+
+  console.log('GoalInput');
+
   return (
 
       <Modal visible={props.visible} animationType="fade" >
@@ -35,7 +41,11 @@ const GoalInput = (props) => {
             <Button title="Add Goal" color="black" onPress={addGoalHandler} />
           </View>
           <View style={styles.button2}>
-            <Button title="Cancel" color="black" onPress={props.onCancel} />
+            <Button
+              title="Cancel"
+              color="black"
+              onPress={props.onCancel}
+            />
           </View>
         </View>
       </View>

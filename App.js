@@ -1,7 +1,6 @@
 // react native Udemy course
 
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList, Button, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -9,17 +8,25 @@ import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
 
- export default function App() {
+export default function App(props) {
    const [modalIsVisible, setModalIsVisible] = useState(false);
    const [courseGoals, setCourseGoals] = useState([]);
+  const [enteredGoalText, setEnteredGoalText] = useState('');
 
    const startAddGoalHandler = () => {
      setModalIsVisible(true);
    };
 
-   const endAddGoalHandler = () => {
+  const endAddGoalHandler = (e) => {
      setModalIsVisible(false);
+    // e.preventDefault();
+    // e.target.reset();
    };
+
+  // useEffect(() => {
+  //   setEnteredGoalText('');
+  // }, [enteredGoalText]);
+
 
    const addGoalHandler = (enteredGoalText) => {
      setCourseGoals(currentCourseGoals => [
@@ -27,6 +34,7 @@ import GoalItem from './components/GoalItem';
        { text: enteredGoalText, id: Math.random().toString() },
      ]);
      endAddGoalHandler();
+    //  resetGoalHandler();
    };
 
    const deleteGoalHandler = (id) => {
@@ -50,6 +58,8 @@ import GoalItem from './components/GoalItem';
         visible={modalIsVisible}
         onAddGoal={addGoalHandler}
         onCancel={endAddGoalHandler}
+          onSubmit={endAddGoalHandler}
+          // onReset={resetGoalHandler}
       />
       <View style={styles.goalsContainer}>
         <FlatList
